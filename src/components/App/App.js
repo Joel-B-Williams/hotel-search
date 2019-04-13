@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './style.less';
 
 class App extends Component {
@@ -45,6 +46,13 @@ class App extends Component {
                 propertyTypeName: 'Hotel'
             }
         }
+    }
+
+    componentDidMount() {
+        axios
+        .get('https://homework-app.rocketmiles.com/fe-homework/rates')
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
     }
 
     render() {
