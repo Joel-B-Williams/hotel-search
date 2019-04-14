@@ -3,6 +3,7 @@ import axios from 'axios';
 import './style.less';
 
 import Hotel from './Hotel';
+import Search from './Search';
 
 class App extends Component {
     state = {
@@ -21,15 +22,10 @@ class App extends Component {
         return (
             <div className="app-container">
                 <div className="content">
-                    <div className="filters">
-                        Hotel name
-                        <input type="text" />
-                        Price
-                        <button>sort</button>
-                    </div>
+                    <Search />
                     <div>
                         { this.state.apiData.results ?
-                        this.state.apiData.results.hotels.map((hotel) => (<Hotel key={hotel.id} {...hotel} />)) : null }
+                        this.state.apiData.results.hotels.map((hotel) => (<Hotel key={hotel.id} {...hotel} />)) : "Oops, no data found..." }
                     </div>
                 </div>
             </div>
