@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 
 class Search extends Component {
 
+  onChange  = event => {
+    this.props.onChange(event.target.value)
+  }
+
   render() {
-    return (
+    return(
       <div className="filters">
-          Hotel name
-          <input type="text" />
-          Price
+          <label>Hotel name</label>
+          <input type="text" onKeyUp={this.onChange} />
+          <label>Price</label>
           <button>sort</button>
       </div>
-    )        
+    )
   }
 }
 

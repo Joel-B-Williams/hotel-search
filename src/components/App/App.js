@@ -2,31 +2,37 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './style.less';
 
-import Hotel from './Hotel';
+import HotelList from './HotelList';
 import Search from './Search';
 
 class App extends Component {
     state = {
-        apiData: {}
+        hotels: {},
+        searchTerm: '' 
     }
 
     componentDidMount() {
         axios
         .get('https://homework-app.rocketmiles.com/fe-homework/rates')
-        .then(res => this.setState({apiData: res.data}))
+        .then(res => this.setState({hotels: res.data})) //TODO- parse apiData better- bad naming
         .catch(err => console.log(err));
+        //TODO- set error logic here?
+    }
+
+    onChange = (searchTerm) => {
+        this.setState({searchTerm: searchTerm})
     }
 
     render() {
-        this.state.apiData.results ? console.log(this.state.apiData.results.hotels) : null
+        this.state.hotels.results ? this.state.hotels.results.hotels : null
         return (
             <div className="app-container">
                 <div className="content">
-                    <Search />
-                    <div>
-                        { this.state.apiData.results ?
-                        this.state.apiData.results.hotels.map((hotel) => (<Hotel key={hotel.id} {...hotel} />)) : "Oops, no data found..." }
-                    </div>
+                    <Search onChange={this.onChange} />
+                    <HotelList 
+                        hotels={this.state.hotels}
+                        searchTerm={this.state.searchTerm} 
+                    />
                 </div>
             </div>
         )

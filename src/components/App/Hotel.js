@@ -8,18 +8,18 @@ class Hotel extends Component {
       <div className="hotel-list">
         <img src={this.props.hotelStaticContent.mainImage.url} className="photo"/>
         <div className="details">
-            <div>
-                {this.props.hotelStaticContent.name}
-            </div>
-            <div>
-                {this.props.hotelStaticContent.neighborhoodName}
-            </div>
+          <div>
+            {this.props.hotelStaticContent.name}
+          </div>
+          <div>
+            {this.props.hotelStaticContent.neighborhoodName}
+          </div>
         </div>
         <div className="price">
-            {this.props.lowestAveragePrice.symbol}
-            {this.props.lowestAveragePrice.amount}
-            {this.props.rewards.miles}
-            <button>Select</button>
+          {this.props.lowestAveragePrice.symbol}
+          {this.props.lowestAveragePrice.amount}
+          {this.props.rewards.miles}
+          <button>Select</button>
         </div>
       </div>
     );
