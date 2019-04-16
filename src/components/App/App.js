@@ -8,25 +8,25 @@ import Search from './Search';
 class App extends Component {
     state = {
         hotels: [],
-        searchTerm: '' 
+        searchTerm: '',
+        error: false 
     }
 
     componentDidMount() {
         axios
         .get('https://homework-app.rocketmiles.com/fe-homework/rates')
         .then(res => this.setState({ hotels: res.data.results.hotels }))
-        .catch(err => this.setState({ hotels: [] }));
-        //TODO- set error logic here?
+        .catch(err => this.setState({ error: true }));
     }
 
     handleChange = (searchTerm) => {
-        this.setState({searchTerm: searchTerm})
+        this.setState({ searchTerm: searchTerm })
     }
 
     handleClick = () => {
         let hotels = this.state.hotels
         hotels.sort((a,b) => a.lowestAveragePrice.amount - b.lowestAveragePrice.amount)
-        this.setState({hotels: hotels})
+        this.setState({ hotels: hotels })
     }
 
     render() {
@@ -40,6 +40,7 @@ class App extends Component {
                     <HotelList 
                         hotels={this.state.hotels}
                         searchTerm={this.state.searchTerm}
+                        error={this.state.error}
                     />
                 </div>
             </div>
