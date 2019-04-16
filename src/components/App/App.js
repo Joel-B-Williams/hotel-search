@@ -2,86 +2,45 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './style.less';
 
+import HotelList from './HotelList';
+import Search from './Search';
+
 class App extends Component {
     state = {
-        mockData: {
-            id: '907',
-            rewards: {
-                miles: 10000
-            },
-            lowestAveragePrice: {
-                currency: 'USD',
-                symbol: '&#36;',
-                amount: 579
-            },
-            hotelStaticContent: {
-                hotelId: 907,
-                languageCode: 'en',
-                mainImage: {
-                    category: 'EXTERIOR',
-                    url: 'http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg',
-                    source: 'VFML'
-                },
-                name: 'Omni Chicago Hotel & Suites Magnificent Mile',
-                neighborhoodName: 'Magnificent Mile',
-                address: {
-                    line1: '676 North Michigan Avenue',
-                    line2: null,
-                    city: 'Chicago',
-                    stateName: 'Illinois',
-                    stateCode: 'IL',
-                    countryName: 'United States',
-                    countryCode: 'US',
-                    zipCode: '60611',
-                    latitude: 41.89475,
-                    longitude: -87.62465,
-                    timeZoneId: 'America/Chicago'
-                },
-                stars: 4,
-                rating: 9,
-                numberOfReviews: 685,
-                brandCode: '1324',
-                brandName: 'Omni Hotels',
-                propertyType: 204,
-                propertyTypeName: 'Hotel'
-            }
-        }
+        hotels: [],
+        searchTerm: '' 
     }
 
     componentDidMount() {
         axios
         .get('https://homework-app.rocketmiles.com/fe-homework/rates')
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err));
+        .then(res => this.setState({ hotels: res.data.results.hotels }))
+        .catch(err => this.setState({ hotels: [] }));
+        //TODO- set error logic here?
+    }
+
+    handleChange = (searchTerm) => {
+        this.setState({searchTerm: searchTerm})
+    }
+
+    handleClick = () => {
+        let hotels = this.state.hotels
+        hotels.sort((a,b) => a.lowestAveragePrice.amount - b.lowestAveragePrice.amount)
+        this.setState({hotels: hotels})
     }
 
     render() {
         return (
             <div className="app-container">
                 <div className="content">
-                    <div className="filters">
-                        Hotel name
-                        <input type="text" />
-                        Price
-                        <button>sort</button>
-                    </div>
-                    <div className="hotel-list">
-                    <img src={this.state.mockData.hotelStaticContent.mainImage.url} className="photo"/>
-                    <div className="details">
-                        <div>
-                            {this.state.mockData.hotelStaticContent.name}
-                        </div>
-                        <div>
-                            {this.state.mockData.hotelStaticContent.neighborhoodName}
-                        </div>
-                    </div>
-                    <div className="price">
-                        {this.state.mockData.lowestAveragePrice.symbol}
-                        {this.state.mockData.lowestAveragePrice.amount}
-                        {this.state.mockData.rewards.miles}
-                        <button>Select</button>
-                    </div>
-                    </div>
+                    <Search 
+                        handleChange={this.handleChange} 
+                        handleClick={this.handleClick} 
+                    />
+                    <HotelList 
+                        hotels={this.state.hotels}
+                        searchTerm={this.state.searchTerm}
+                    />
                 </div>
             </div>
         )
