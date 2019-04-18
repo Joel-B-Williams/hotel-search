@@ -8,12 +8,15 @@ class Search extends Component {
 
   render() {
     return(
-      <div className="filters">
-          <label>Hotel name</label>
-          <input type="text" onKeyUp={this.onChange} />
-          <label>Price</label>
-          <button onClick={this.props.handleClick}>sort</button>
-      </div>
+        <div className="filters">
+            <label for="propertySearch">Search properties</label>
+            <input 
+              type="text" 
+              onKeyUp={this.onChange} 
+              id="propertySearch"
+              placeholder="Property name"/>
+            <button onClick={this.props.handleClick} className="btn">Price Low-to-High</button>
+        </div>
     )
   }
 }
