@@ -23,7 +23,7 @@ class App extends Component {
         this.setState({ searchTerm: searchTerm })
     }
 
-    handleClick = () => {
+    onClick = () => {
         let hotels = this.state.hotels
         hotels.sort((a,b) => a.lowestAveragePrice.amount - b.lowestAveragePrice.amount)
         this.setState({ hotels: hotels })
@@ -36,7 +36,7 @@ class App extends Component {
                     <div className="search-area">
                         <Search 
                             handleChange={this.handleChange} 
-                            handleClick={this.handleClick} 
+                            onClick={this.onClick} 
                         />
                     </div>
                     <HotelList 

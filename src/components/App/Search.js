@@ -15,7 +15,7 @@ class Search extends Component {
               onKeyUp={this.onChange} 
               id="propertySearch"
               placeholder="Property name"/>
-            <button onClick={this.props.handleClick} className="btn">Price Low-to-High</button>
+            <button onClick={this.props.onClick} className="btn">Price Low-to-High</button>
         </div>
     )
   }
