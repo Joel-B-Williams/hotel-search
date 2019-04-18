@@ -9,7 +9,7 @@ class Search extends Component {
   render() {
     return(
         <div className="filters">
-            <label for="propertySearch">Search properties</label>
+            <label htmlFor="propertySearch">Search properties</label>
             <input 
               type="text" 
               onKeyUp={this.onChange} 

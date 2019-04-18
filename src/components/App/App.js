@@ -33,17 +33,12 @@ class App extends Component {
         return (
             <div className="app-container">
                 <div className="content">
-                    {
-                        this.state.error ?
-                        null :
-                        (
-                        <div className="search-area">
-                            <Search 
-                                handleChange={this.handleChange} 
-                                handleClick={this.handleClick} />
-                        </div>
-                        )
-                    }
+                    <div className="search-area">
+                        <Search 
+                            handleChange={this.handleChange} 
+                            handleClick={this.handleClick} 
+                        />
+                    </div>
                     <HotelList 
                         hotels={this.state.hotels}
                         searchTerm={this.state.searchTerm}

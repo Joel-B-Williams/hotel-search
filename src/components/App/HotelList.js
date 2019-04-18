@@ -5,7 +5,11 @@ class HotelList extends Component {
 
   render() {
     const error = this.props.error;
-    const errorMessage = "No hotels found, please try again"
+    const errorMessage = 
+    <div className="status-message">
+      <p>Something has gone horribly pear-shaped</p>
+      <p>Please try again</p>
+    </div>
     
     return (
       <div>
