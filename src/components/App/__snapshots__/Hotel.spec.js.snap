@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hotel matches snapshot 1`] = `
+<div
+  className="hotel-list"
+>
+  <img
+    className="photo"
+    onError={[Function]}
+    src="http://d2whcypojkzby.cloudfront.net/imageRepo/6/0/96/743/239/chidt-exterior-0227-hor-clsc_S.jpg"
+  />
+  <div
+    className="details"
+  >
+    <div
+      className="hotel-name"
+    >
+      Chicago Marriott Downtown Magnificent Mile
+    </div>
+    <div
+      className="hotel-location"
+    >
+      Magnificent Mile
+    </div>
+  </div>
+  <div
+    className="price"
+  >
+    <table
+      className="price-table"
+    >
+      <tbody>
+        <tr>
+          <td>
+            Per night: 
+          </td>
+          <td
+            className="price-per-night"
+          >
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#36;",
+                }
+              }
+            />
+            234
+          </td>
+        </tr>
+        <tr
+          className="points-row"
+        >
+          <td>
+            Points earned:
+          </td>
+          <td
+            className="points-earned"
+          >
+            8000
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button
+      className="btn hotel-btn"
+    >
+      Select Now
+    </button>
+  </div>
+</div>
+`;

@@ -24,7 +24,6 @@ class Hotel extends Component {
               <tr>
                 <td>Per night: </td>
                 <td className="price-per-night">
-                  {/* find less risky method if possible */}
                   <p dangerouslySetInnerHTML={{__html: this.props.lowestAveragePrice.symbol}}></p>
                   {this.props.lowestAveragePrice.amount || "$$"}
                 </td>
