@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App matches snapshot 1`] = `
+<div
+  className="app-container"
+>
+  <div
+    className="content"
+  >
+    <div
+      className="search-area"
+    >
+      <div
+        className="filters"
+      >
+        <label
+          htmlFor="propertySearch"
+        >
+          Search properties
+        </label>
+        <input
+          id="propertySearch"
+          onKeyUp={[Function]}
+          placeholder="Property name"
+          type="text"
+        />
+        <button
+          className="btn"
+          onClick={[Function]}
+        >
+          Price Low-to-High
+        </button>
+      </div>
+    </div>
+    <div>
+      <div />
+      <div>
+        <div
+          className="status-message"
+        >
+          <p>
+            No properties found
+          </p>
+          <p>
+            Please adjust search parameters
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
