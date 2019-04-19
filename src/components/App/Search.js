@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Search extends Component {
 
   onChange  = event => {
-    this.props.handleChange(event.target.value)
+    this.props.onChange(event.target.value)
   }
 
   render() {
